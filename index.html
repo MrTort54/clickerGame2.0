@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        .wrap{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(dzheremi-chong-art-priroda-les.jpg);
+            background-size:cover;
+            flex-direction: column;
+            
+        }
+        .monster{
+            width: 250px;
+            height: 400px;
+            background-image: url(6642364a668653ba3d09d2ad1dc3baf6.png);
+            background-size:cover;
+            transition: 0.2s;
+            border-radius: 20%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            
+        }
+        h1{
+            color:rgb(245, 187, 187);
+            font-size: 40px;
+            font-family:monospace;
+            font-weight: 900;
+            
+        }
+        .line{
+            align-items: center;
+            font-size: 20px;
+            outline: none;
+            user-select: none;
+            font-family:monospace;
+            width: 100%;
+            height: 20px;
+            background-color: rgb(199, 34, 34);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(245, 187, 187);
+            
+
+        }
+        .hp{
+            width: 400px;
+            height: 100px;
+            /* background-color: antiquewhite; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .bossMesage{
+            position: absolute;
+            display: none;
+            width: 500px;
+            height: 500px;
+            /* background-color: aquamarine; */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h2{
+            font-size: 200px;
+            font-family: monospace;
+            color: rgb(253, 241, 171);
+            margin-top: -60px;
+
+        }
+        .skul{
+            width: 200px;
+            height: 200px;
+            background-image: url(skull.png);
+            background-size: cover;
+        }
+        h3{
+            color:rgb(245, 187, 187);
+            font-size: 20px;
+            font-family:monospace;
+            font-weight: 900;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="bossMesage" id="bossMesage">
+            <h2>Boss</h2>
+            <div class="skul"></div>
+        </div>
+        <div class="hp">
+            <h1 id="txt">swamp skeleton</h1>
+            <h3 id="level">level: 1</h3>
+            <div class="line" id="line"> 10</div>
+        </div>
+        <div class="monster" id="monster"></div>
+
+    </div>
+    <script>
+         let count = 10
+         let click = 0
+         let i = 0
+         let boss = 0
+         let bossClick = 0
+         let gold = 2
+
+         let hero1 = ['url(6642364a668653ba3d09d2ad1dc3baf6.png)','url(12-120551_-hd-png-download.png)','url(147448754012907186.jpg)','url(661-6618655_black-knight-charon-death-knight-dnd-token-hd.png)']
+         let hero1Name = ['swamp skeleton','knight','forest witch','forest druid']
+
+          monster.onmousedown = function(){
+            monster.style.width = '200px'
+            monster.style.height = '350px'
+        }
+        monster.onmouseup = function(){
+            monster.style.width = '250px'
+            monster.style.height = '400px'
+        }
+        monster.onclick = function(){
+            count--;
+            line.innerText = count
+            click++
+            bossClick++
+            console.log(count)
+            console.log(click)
+            console.log(i)
+            console.log(boss)
+            if(count === 0){
+                count = click;
+                line.innerText = count
+                i++
+                boss = Math.floor(Math.random()*100)
+                level.innerText = 'level: ' + Math.floor(click/10);
+                gold += Math.floor(count)
+                console.log(gold + 'gold')
+                
+            if(i>hero1.length){
+                i = 0;
+            }else if(i === 4){
+                i = 0;
+                monster.style.backgroundImage = hero1[i];
+                txt.innerText = hero1Name[i]
+
+            }else if(boss < 20){
+                monster.style.backgroundImage = 'url(death-knight-five.png)';
+                count = bossClick *2;
+                line.innerText = count
+                click = 0
+                txt.innerText = 'Boss';
+                bossMesage.style.display = 'flex'
+                setTimeout(function(){
+                    bossMesage.style.display = 'none'
+
+
+                },1000)
+
+
+            }
+            else{
+                monster.style.backgroundImage = hero1[i];
+                txt.innerText = hero1Name[i]
+            }
+        }
+              
+            
+            }
+            
+
+
+
+
+   
+      
+            
+            
+            
+       
+       
+    </script>
+</body>
+</html>
